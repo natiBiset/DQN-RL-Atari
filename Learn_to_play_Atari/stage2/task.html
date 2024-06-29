@@ -1,0 +1,46 @@
+<html>
+
+<h2>Description</h2>
+
+<p>Now it's time to create our agent! We'll be using a Deep Q-Network (DQN), a powerful type of neural network designed for making decisions in reinforcement learning environments. The DQN will learn to approximate the Q-value, which represents the expected reward for taking a particular action in a given game state. During training, the network learns to predict which actions are likely to lead to the highest scores by adjusting its internal weights based on the rewards it receives.</p>
+
+<p>We will use Stable Baselines3, a popular library that offers ready-to-use implementations of various reinforcement learning algorithms. This library provides tools for training, evaluating, and even saving our trained models. We will import the DQN module and call it with the appropriate arguments.</p>
+
+<h2>Objective</h2>
+
+<ol>
+	<li>
+	<p>Ensure all required libraries are imported.</p>
+
+	<pre><code class="language-python">import os
+from stable_baselines3.common.env_util import make_atari_env
+from stable_baselines3.common.vec_env import VecFrameStack
+from stable_baselines3 import DQN</code></pre>
+	</li>
+	<li>
+	<p>Stable Baselines provides you with a way to train the agent parallelly on multiple environments. To achieve this load the environment using the <code>make_atari_env</code> function with the argument <code>n_envs</code> and pass same number you choose to <code>VectFrameStack</code>'s <code>n_stack</code>.</p>
+
+	<pre><code class="language-python">env = make_atari_env('ALE/Breakout-v5', n_envs=4, seed=0)
+env = VecFrameStack(env, n_stack=4)
+</code></pre>
+	</li>
+	<li>
+	<p><strong>Logging:</strong>  Before creating the agent model, set up logging path. create a folder named '<em>logs/training</em>' in the same folder as the code you are writing.</p>
+	</li>
+	<li>
+	<p>Create the DQN agent using the VecFrameStack object you created above.<br>
+	<code><span style="color: #000000;">model = DQN(</span><span style="color: #a31515;">"CnnPolicy"</span><span style="color: #000000;">, env, verbose=</span><span style="color: #116644;">1</span><span style="color: #000000;">, tensorboard_log='log path you created')</span></code><br>
+	The <code>CnnPolicy</code> is used because it is well-suited for processing image data from games. The <code>tensorboard_log</code> argument enables logging for TensorBoard, which helps visualize training metrics.</p>
+	</li>
+	<li>
+	<p><span style="color: #000000;">Print the full path of the logging directory </span>the same way as shown in the Example section below.</p>
+	</li>
+</ol>
+
+<h2>Examples</h2>
+
+<p><strong>Example 1:</strong><br>
+Expected logging folder structure.</p>
+
+<pre><code>model path: /home/ubuntu/user/projects/RL/atari/breakout/logs/training</code></pre>
+</html>

@@ -1,0 +1,49 @@
+<html>
+
+<h2>Description</h2>
+
+<p>Before we can teach an Agent to play Breakout, we need to set up the game environment itself. We&#39;ll use the gymnasium library, a toolkit specifically designed for developing and testing reinforcement learning algorithms. This library provides us with a standardized way to interact with various environments, including a range of Atari games like Breakout.</p>
+
+<p>Here&#39;s how Breakout is played: you control a paddle at the bottom of the screen, and your goal is to bounce a ball to break bricks at the top. Each time you clear all the bricks, you move to a new level. In our project, the agent will learn to control the paddle. The paddle can only move left or right &ndash; these are its possible actions. The &quot;action space&quot; of the environment tells us what actions are allowed.</p>
+
+<p>Additionally, the agent needs to understand the game&#39;s state, which includes the position of the paddle, the position and velocity of the ball, and the layout of the remaining bricks. This is provided by the &quot;observation space,&quot; which tells us what information the agent can observe from the environment.</p>
+
+<p>The agent will receive rewards based on its performance, such as positive rewards for breaking bricks and negative rewards for missing the ball. This reward system helps the agent learn which actions are beneficial and which are not.</p>
+
+<p>In this stage, our goal is to set up the Breakout environment within Gymnasium and get a feel for how it works.</p>
+
+<h2>Objective</h2>
+
+<p>Follow the following steps to set up things for the coming stages:</p>
+
+<ol>
+	<li>
+	<p>Import the gymnasium library.</p>
+	</li>
+	<li>
+	<p>Create an instance of the Breakout environment using <code>gym.make(&#39;ALE/Breakout-v5&#39;)</code></p>
+	</li>
+	<li>
+	<p><strong>Reset the Environment and Get the Initial Observation:</strong></p>
+
+	<ul>
+		<li>
+		<p>Call the <code>env.reset()</code> method to start a new episode and obtain the initial observation of the game screen.</p>
+		</li>
+	</ul>
+	</li>
+	<li>Use <code>env.render()</code> to render a single frame of the game.</li>
+	<li>Use <code>env.action_space.n</code> and <code><span style="color:#000000">env.observation_space.shape</span></code> to print out the&nbsp;number of possible actions and the shape of the observation respectively in the same way as shown in the Example section below.</li>
+</ol>
+
+<h2>Examples</h2>
+
+<p><strong>Example 1:</strong><br />
+Output:</p>
+
+<pre>
+<code>Action Space: 4
+Observation Space: (210, 160, 3)</code></pre>
+
+
+</html>

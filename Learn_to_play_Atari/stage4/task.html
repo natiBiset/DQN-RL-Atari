@@ -1,0 +1,36 @@
+<html>
+
+<h2>Description</h2>
+
+<p>After investing time and effort into training our DQN agent, it's time to assess how well it performs in the game of Breakout. We'll evaluate its gaming prowess by observing it in action and examining key metrics like average rewards over multiple episodes. This analysis will reveal how effectively our agent has learned to play Breakout and provide insights for potential improvements in future iterations. For this evaluation, we can use the Stable Baselines library, which provides us with pre-built tools for evaluating reinforcement learning models.</p>
+
+<h2>Objective</h2>
+
+<ol>
+	<li> Reload the trained model. Use the same <code>n_stack</code> value as used during training, but set <code>n_envs=1</code> since we only want to test the agent in a single environment.
+
+	<pre><code class="language-python">model_path = os.path.join("logs", "saved", "DQN_Breakout_500000")
+
+model = DQN.load(model_path)
+env = make_atari_env(env_name, n_envs=1, seed=0)
+env = VecFrameStack(env, n_stack=4)</code></pre>
+	</li>
+	<li> Import <code>evaluate_policy</code> from stable baselines, and pass the model, env and number of episodes/full games you want the test to run on.
+	<pre><code class="language-python">from stable_baselines3.common.evaluation import evaluate_policy
+evaluate_policy(model, env, n_eval_episodes=100, render=True)</code></pre>
+	Here <code>render=True</code> will make the whole process visible, allowing you to see the trained agent in action.</li>
+	<li>
+	<p>On your console, you will see output in the format <code>(mean_reward, std_reward)</code>.</p>
+	<strong>Mean Reward</strong>: This indicates the average reward the agent received per episode over the evaluation period. A higher mean reward suggests that the agent has learned to play the game well.<br>
+	<strong>Standard Deviation of Reward (std_reward)</strong>: This measures the variability in the rewards across episodes. A lower standard deviation indicates more consistent performance, while a higher standard deviation suggests that the agent's performance varies more widely from one episode to the next.</li>
+</ol>
+
+<p> </p>
+
+<h2>Examples</h2>
+
+<p><strong>Example 1:</strong><br>
+Output:</p>
+
+<pre><code>(1.0 1.0)</code></pre>
+</html>

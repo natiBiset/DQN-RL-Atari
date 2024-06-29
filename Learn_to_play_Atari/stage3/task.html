@@ -1,0 +1,37 @@
+<html>
+
+<h2>Description</h2>
+
+<p>With our DQN ready, we can now train our agent to play Breakout! This involves creating a training loop where the agent repeatedly interacts with the environment. In each episode, the agent chooses actions based on the DQN's predictions, receives rewards based on its performance (e.g., breaking bricks), and stores the experience (state, action, reward, next state) in a replay buffer. The DQN then learns from batches of these experiences, gradually improving its ability to make good decisions and achieve higher scores in Breakout.</p>
+
+<p>Stable Baselines simplifies this process by allowing us to train our model with a single line of code.</p>
+
+<h2>Objective</h2>
+
+<p><strong>Implement the Training Loop:</strong></p>
+
+<ol>
+	<li>Follow the steps from Stage 2 to create the DQN model.</li>
+	<li>
+	<p>Use Stable Baselines to train the model.<br>
+	<code><span style="color: #000000;">model.learn(total_timesteps=</span><span style="color: #116644;">500000</span><span style="color: #000000;">)</span></code></p>
+	</li>
+	<li>
+	<p><span style="color: #000000;">Save the model as '<em>training/saved/DQN_Breakout_500000'</em>. To achieve this, run </span></p>
+
+	<pre><code class="language-python">model_path = os.path.join("logs", "saved", "DQN_Breakout_500000")
+model.save(model_path)</code></pre>
+	</li>
+	<li>
+	<p> Print the full <code>model_path</code> the same way as shown in the Example section below.</p>
+	</li>
+</ol>
+
+<h2>Examples</h2>
+
+<p><strong>Example 1:</strong><br>
+Output:</p>
+
+<pre><code class="language-python">model path: /home/ubuntu/user/projects/RL/atari/breakout/logs/saved/DQN_Breakout_500000</code></pre>
+
+</html>
